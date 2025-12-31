@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Selamat Tahun Baru 2026</title>
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Splash Screen / Intro Page - MOBILE FIRST */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 1s ease, transform 1s ease;
+            padding: 20px;
+        }
+
+        #splash-screen.hide {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease;
+            max-width: 100%;
+        }
+
+        .splash-content h1 {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 15px;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .splash-content p {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+            padding: 0 10px;
+        }
+
+        #enter-button {
+            padding: 15px 35px;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-family: 'Caveat', cursive;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #enter-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Tablet & Desktop */
+        @media (min-width: 768px) {
+            .splash-content h1 {
+                margin-bottom: 20px;
+            }
+            
+            .splash-content p {
+                margin-bottom: 40px;
+            }
+
+            #enter-button {
+                padding: 20px 50px;
+            }
+
+            #enter-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+            width: 100%;
+        }
+
+        #main-content.show {
+            opacity: 1;
+        }
+
+        html,
+        body {
+            background: linear-gradient(to bottom, #090513 0%, #964987 75%, #fdbca3 100%);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            animation: rotation 360s infinite linear;
+        }
+
+        .stars:after, .stars:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEVHcEz///+flKJDAAAAAXRSTlMAQObYZgAAAIVJREFUeAHt2SEOwkAQhtFJKuqKRRGOgKzgUMgKRI/G0ZDoacNkN/ue/zJ+/ugBcI+01/EEAGBc04FkP58AVFoi7VaSLAEAAPB/j0hbK678AADMkXbZG03mGA0AAKsP3JgAAGDa88knsuZ8Mp1M6gEAPFtNrtEjtkh7lyRb3/PAWpS0BPgC0PMMdOEjXqoAAAAASUVORK5CYII=");
+        }
+
+        .stars:after {
+            background-size: 100px;
+            opacity: 0.4;
+        }
+
+        .stars:before {
+            background-size: 200px;
+            opacity: 0.6;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        #title-container {
+    position: relative;
+    z-index: 10;
+    transform: translateY(-10vh);
+    padding: 0 15px;
+}
+
+h1#title {
+    font-size: clamp(2rem, 8vw, 5.5rem);
+    color: #fff;
+    font-family: "Caveat", sans-serif;
+    text-align: center;
+    padding: 0.3em;
+    transform: rotate(-4deg);
+    line-height: 1.3;
+    margin: 0;
+    font-weight: bold;
+}
+
+h1#title .subtitle {
+    font-size: clamp(1.8rem, 7vw, 4.5rem);
+    display: block;
+    margin-top: 0.3em;
+}
+
+/* Desktop adjustment */
+@media (min-width: 768px) {
+    #title-container {
+        transform: translateY(-12vh);
+    }
+    
+    h1#title {
+        font-size: clamp(3rem, 9vw, 6rem);
+    }
+    
+    h1#title .subtitle {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    h1#title {
+        font-size: 7rem;
+    }
+    
+    h1#title .subtitle {
+        font-size: 5.5rem;
+    }
+}
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: auto;
+            min-width: 100%;
+            height: 40px;
+            fill: #000022;
+        }
+
+        /* Larger mountains for desktop */
+        @media (min-width: 768px) {
+            .mountains {
+                height: 60px;
+            }
+        }
+
+        .mountains--layer1 {
+            z-index: 2;
+        }
+
+        .mountains--layer2 {
+            fill: #9d5189;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- SPLASH SCREEN / INTRO PAGE -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1>🎆 Tahun Baru 2026 🎆</h1>
+            <p>Untuk Revanny Tersayang ❤️</p>
+            <button id="enter-button">🎉 Klik untuk Mulai 🎉</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
+        <div id="title-container">
+    <h1 id="title">
+        Selamat tahun baru 2026<br>
+        <span class="subtitle">Revanny Febri Maulidyna ❤️</span>
+    </h1>
+</div>
+        <div class="stars"></div>
+        
+        <svg class="mountains mountains--layer1" xmlns="http://www.w3.org/2000/svg" width="1920" height="200" viewBox="0 0 1920 200" preserveAspectRatio="none">
+            <title>bergskedja</title>
+            <path d="M0,41.57s21.25,2.19,27.33,2.19,22.27-4.37,28.34,0-1,22.94,6.07,19.67S72.87,52,81,52.81s16.19,10.15,22.27,0,25.3-1.41,30.36,6.24,21.25,7.33,26.32,4.76,8.1-20.66,16.19-22,17.21-6.31,18.22,0,5.06,3,12.15,3,20.24-10.93,25.3-14.2S238.86,11,259.1,11s35.42,4.37,43.52,0S316.79.05,321.86.05,337-1,337,6.61s6.07,24.92,15.18,26.12,30.36,11,34.41,14.31,18.22-2.19,18.22-2.19c11.13,7.65,20.24,0,20.24,0S441.29,23,453.43,18.63s17.21,4.37,20.24,7.65S497,32.62,500,32.73s19.23-10.82,23.28-10.82,27.33-4.37,34.41-3.28,16.19,10.72,16.19,14.1S582,52.5,586,52.5s15.18,2.19,21.25,2.19,14.17,1.09,17.21,1.09,6.07-3.28,26.32-13.11S669,21.91,677.11,24.09s9.11,14.2,16.19,13.11,0-17.48,24.29-17.48a140.45,140.45,0,0,1,44.53,7.65s3,29.5,17.21,29.5c0,0,28.34-7.65,36.44-7.65s39.47,7.33,47.57,16.23,32.39,12.18,42.51,12.18,25.3,15.3,28.34,15.3,23.28,3.28,28.34-5.46S967.59,66.7,975.69,58s10.12-21.3,17.21-11.2,13.16,8.47,16.19,0,14.17-16.12,17.21-16.12,19.23,3.28,19.23,6.56,25.3-2.19,35.42-12,39.47-9.83,65.79-9.83,54.65,9.83,61.74,14.2,33.4,7.65,42.51,7.65,20.24,4.37,26.32,4.37,5.06,9.83,17.21,13.11,25.3-8.19,28.34-7.92,10.12-16.12,19.23-16.12,27.33,16.94,34.41,16.12,22.27,22.12,28.34,24.31,2,12.13,18.22,22.45,22.27,32.18,34.41,32.18,50.61-8.74,54.65-15.3,22.27-19.67,27.33-19.67,34.41-7.65,38.46-4.37,29.35,22.94,48.58,22.94,46.56-14.2,54.65-14.2,23.28-9.83,35.42-9.83,46.56,12,57.69,14.2,42.51,8.74,58.7,8.74,38.67-42.77,66.8-45.89c6.12-.68,20.24,1.09,20.24,1.09V200H0Z"/>
+        </svg>
+
+        <svg class="mountains mountains--layer2" xmlns="http://www.w3.org/2000/svg" width="1920" height="200" viewBox="0 0 1920 200" preserveAspectRatio="none">
+            <title>bergskedja2</title>
+            <path d="M0,82.09s21.14-13,30.14-19,24-16,45-17.5,49.5-23.86,63-17c0,0,62.87.71,70.5,6.67s81,40.83,127.49,40.83,88.5-20.16,126-24.33,68.23-29.63,90-24.33,31.5,3.89,46.5-.72,25.5-19.61,42-19.61,25.5-7.1,51-7.1,39,11.59,63,11.59,60-3,75,3S864.1,4,882.09,4,934.41,22.09,960,17.59s58.59-7.5,75.09-4.5,36,16.9,61.5,25,82.5,17,97.5,18.55,51.77-6,67.5-10.5S1313,30,1330.81,38s23.76,44,44.76,44,45-6,57-12,31.5-22.5,45-22.5,12,7.5,31.5,7.5,42-4.5,57-4.5,24-25.5,49.5-22.5,66,1.9,90,13,49.5,30.55,78,33.55,54-16.5,69-12,44.91,19.5,67.45,19.5V200H0Z"/>
+        </svg>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
+    <script>
+        // PRELOAD AUDIO
+        const fireworkSound = new Audio('https://haekall.github.io/love/firework.mp3');
+        const clickSound = new Audio('https://haekall.github.io/love/click.mp3');
+        const bgMusic = new Audio('https://haekall.github.io/love/celebration.mp3');
+
+        fireworkSound.volume = 0.5;
+        clickSound.volume = 0.4;
+        bgMusic.volume = 0.3;
+        bgMusic.loop = true;
+
+        // SPLASH SCREEN LOGIC
+        const splashScreen = document.getElementById('splash-screen');
+        const enterButton = document.getElementById('enter-button');
+        const mainContent = document.getElementById('main-content');
+
+        enterButton.addEventListener('click', function() {
+            // Play music
+            bgMusic.play().then(() => {
+                console.log('Music started!');
+            }).catch(e => console.log('Error:', e));
+
+            // Hide splash screen
+            splashScreen.classList.add('hide');
+            
+            // Show main content
+            setTimeout(() => {
+                mainContent.classList.add('show');
+                splashScreen.style.display = 'none';
+                
+                // Start animations
+                timeline.play();
+                timelineText.play();
+            }, 500);
+        });
+
+        // MOJS CONFIGURATION
+        const B_CHILD = {
+            fill: { "#ffffff": "#ef1cec" },
+            delay: "rand(300, 359)",
+            duration: 700,
+            pathScale: "rand(0.8, 1)",
+            isSwirl: true,
+            swirlSize: "stagger(-2,2)",
+            swirlFrequency: 1
+        };
+
+        const B_OPTS = {
+            count: "rand(15,20)",
+            top: "100%",
+            children: { ...B_CHILD }
+        };
+
+        const burst1 = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(150,170)" },
+            x: -45,
+            y: -335,
+            children: { ...B_CHILD }
+        });
+
+        const burst1_2 = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(150,170)" },
+            x: -45,
+            y: -335,
+            children: {
+                ...B_CHILD,
+                delay: "rand(260, 350)",
+                pathScale: "rand(0.7, 0.8)",
+                degreeShift: 20
+            }
+        });
+
+        const burst2 = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(100,150)" },
+            x: 140,
+            y: -315,
+            children: {
+                ...B_CHILD,
+                fill: { "#ffffff": "#d8ff00" }
+            }
+        });
+
+        const burst2_2 = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(100,150)" },
+            x: 140,
+            y: -315,
+            children: {
+                ...B_CHILD,
+                fill: { "#ffffff": "#d8ff00" },
+                delay: "rand(260, 350)",
+                pathScale: "rand(0.7, 0.8)",
+                degreeShift: 20
+            }
+        });
+
+        const burst_tune = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(100,150)" },
+            left: 0,
+            top: 0,
+            x: 0,
+            y: 0,
+            children: {
+                ...B_CHILD,
+                delay: "rand(0, 50)",
+                fill: { "#ffffff": "#d8ff00" }
+            }
+        });
+
+        const burst_tune_2 = new mojs.Burst({
+            ...B_OPTS,
+            radius: { 0: "rand(100,150)" },
+            left: 0,
+            top: 0,
+            children: {
+                ...B_CHILD,
+                fill: { "#ffffff": "#d8ff00" },
+                delay: "rand(10, 150)",
+                pathScale: "rand(0.7, 0.8)",
+                degreeShift: 20
+            }
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!splashScreen.classList.contains('hide')) return;
+            
+            burst_tune.generate().tune({ x: e.pageX, y: e.pageY }).replay();
+            burst_tune_2.generate().tune({ x: e.pageX, y: e.pageY }).replay();
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => {});
+        });
+
+        const FW_OPTS = {
+            shape: "curve",
+            fill: "none",
+            isShowStart: false,
+            strokeWidth: { 3: 0 },
+            stroke: "#ffffff",
+            strokeDasharray: "100%",
+            strokeDashoffset: { "-100%": "100%" },
+            duration: 1000
+        };
+
+        const fw1 = new mojs.Shape({
+            ...FW_OPTS,
+            radius: 170,
+            radiusY: 20,
+            top: "100%",
+            y: -165,
+            angle: 75,
+            onStart: function () {
+                burst1.replay(0);
+                burst1_2.replay(0);
+                fireworkSound.currentTime = 0;
+                fireworkSound.play().catch(e => {});
+            }
+        });
+
+        const fw2 = new mojs.Shape({
+            ...FW_OPTS,
+            radius: 180,
+            radiusY: 50,
+            top: "100%",
+            x: 50,
+            y: -155,
+            strokeDashoffset: { "100%": "-100%" },
+            angle: -60,
+            delay: 200,
+            onStart: function () {
+                burst2.replay(0);
+                burst2_2.replay(0);
+                fireworkSound.currentTime = 0;
+                fireworkSound.play().catch(e => {});
+            }
+        });
+
+       // Underline yang lebih panjang dan disesuaikan
+const underline = new mojs.Shape({
+    parent: document.getElementById("title"),
+    shape: "curve",
+    strokeLinecap: "round",
+    fill: "none",
+    isShowStart: false,
+    strokeWidth: { "0.5em": "3em" },
+    stroke: "#ffffff",
+    strokeDasharray: "100%",
+    strokeDashoffset: { "100%": "-100%" },
+    radius: window.innerWidth < 768 ? 180 : 280, // Responsive width
+    radiusY: 15,
+    y: window.innerWidth < 768 ? "2.8em" : "2.5em", // Posisi di bawah text
+    x: 0,
+    angle: -8,
+    duration: 2000,
+    delay: 1000
+}).then({
+    strokeWidth: { "3em": "0.5em" },
+    strokeDashoffset: { "-100%": "200%" },
+    duration: 2000,
+    delay: 10000
+}); 
+
+        const timelineText = new mojs.Timeline({
+            repeat: 999
+        }).add(underline);
+
+        const timeline = new mojs.Timeline({
+            repeat: 999
+        }).add([fw1, fw2]);
+    </script>
+</body>
+</html>
